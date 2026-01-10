@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, User, ShoppingCart, Moon, Sun } from "lucide-react";
+import { Menu, X, User, ShoppingCart } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/contexts/CartContext";
-import { useTheme } from "next-themes";
 
 const navLinks = [
   { href: "/start", label: "Programs" },
@@ -20,13 +19,6 @@ export const Header = () => {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
   const { totalItems } = useCart();
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleJoinNow = () => {
     if (location.pathname === "/") {
@@ -47,9 +39,6 @@ export const Header = () => {
     }
   };
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -97,20 +86,6 @@ export const Header = () => {
 
           {/* Right side actions - visible on desktop only */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Theme Toggle */}
-            {mounted && (
-              <button
-                onClick={toggleTheme}
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
-              </button>
-            )}
 
             {/* Cart Button */}
             <Link to="/cart" className="relative p-2 hover:bg-muted rounded-lg transition-colors">
@@ -148,20 +123,6 @@ export const Header = () => {
 
           {/* Mobile/Tablet: Cart & Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
-            {/* Mobile Theme Toggle */}
-            {mounted && (
-              <button
-                onClick={toggleTheme}
-                className="p-2 hover:bg-muted rounded-lg transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
-              </button>
-            )}
             <Link to="/cart" className="relative p-2">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
