@@ -1,96 +1,67 @@
-import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { PageHero } from "@/components/PageHero";
+import { PageHero } from "@/components/sections/PageHero";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Phone, MapPin } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
+import { Mail, MapPin, ExternalLink } from "lucide-react";
 
 const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      toast({ title: "Message sent!", description: "We'll get back to you soon." });
-      setIsSubmitting(false);
-    }, 1000);
+  const handleEmailClick = () => {
+    window.location.href = "mailto:admin@abdeenacademy.com";
   };
 
   return (
     <Layout>
-      <PageHero
-        title="Contact Us"
-        description="Have questions? We'd love to hear from you"
-        showStudentCounter={false}
-      />
-      
-      <section className="py-16 md:py-24">
-        <div className="container">
-          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <div className="space-y-8">
-              <div>
-                <h2 className="font-display text-2xl font-bold mb-4">Get in Touch</h2>
-                <p className="text-muted-foreground">
-                  Whether you have questions about our programs, need assistance, or want to 
-                  explore partnership opportunities, we're here to help.
-                </p>
-              </div>
-              
-              <div className="space-y-4">
-                <Card>
-                  <CardContent className="flex items-center gap-4 p-4">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-medium">Email</p>
-                      <p className="text-sm text-muted-foreground">admin@abdeenacademy.com</p>
-                    </div>
-                  </CardContent>
-                </Card>
-                
-                <Card>
-                  <CardContent className="flex items-center gap-4 p-4">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <MapPin className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-medium">Location</p>
-                      <p className="text-sm text-muted-foreground">Netherlands (Online Academy)</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-            
-            <Card>
-              <CardContent className="p-6">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" placeholder="Your name" required />
+      <PageHero title="Contact Us" description="Have questions? We're here to help. Reach out through email." />
+
+      {/* Contact Methods */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex justify-center">
+              {/* Email */}
+              <Card
+                className="group hover:shadow-lg transition-shadow cursor-pointer max-w-md w-full"
+                onClick={handleEmailClick}
+              >
+                <CardContent className="pt-8 text-center">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <Mail className="w-8 h-8 text-primary" />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="your@email.com" required />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" placeholder="How can we help?" required />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea id="message" placeholder="Your message..." rows={5} required />
-                  </div>
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                  <h3 className="font-semibold text-lg mb-2">Email</h3>
+                  <p className="text-muted-foreground text-sm mb-4">admin@abdeenacademy.com</p>
+                  <Button variant="outline" size="sm" className="gap-2">
+                    Send Email
+                    <ExternalLink className="w-3 h-3" />
                   </Button>
-                </form>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Location Info */}
+            <Card className="mt-12">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-primary" />
+                  About Our Operations
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Abdeens Academy is a fully online platform, allowing us to serve students worldwide. Our team operates
+                  across multiple time zones to ensure you receive support when you need it. We typically respond within
+                  24 hours on business days.
+                </p>
+                <div className="mt-6 grid md:grid-cols-2 gap-4">
+                  <div className="bg-secondary/30 p-4 rounded-lg">
+                    <h4 className="font-semibold mb-1">Support Hours</h4>
+                    <p className="text-sm text-muted-foreground">Monday - Friday: 9am - 9pm (GMT)</p>
+                    <p className="text-sm text-muted-foreground">Saturday - Sunday: 10am - 6pm (GMT)</p>
+                  </div>
+                  <div className="bg-secondary/30 p-4 rounded-lg">
+                    <h4 className="font-semibold mb-1">Response Time</h4>
+                    <p className="text-sm text-muted-foreground">Email: Within 24 hours</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
