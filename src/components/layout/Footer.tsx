@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Youtube } from "lucide-react";
 
+// TikTok icon component
 const TikTok = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
     <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
@@ -85,28 +86,28 @@ export const Footer = () => {
                 href="https://instagram.com/abdeentube"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
                 aria-label="Instagram"
               >
-                <Instagram className="h-5 w-5" />
+                <Instagram className="h-4 w-4 md:h-5 md:w-5" />
               </a>
               <a
                 href="https://youtube.com/@AbdeenTube"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
                 aria-label="YouTube"
               >
-                <Youtube className="h-5 w-5" />
+                <Youtube className="h-4 w-4 md:h-5 md:w-5" />
               </a>
               <a
                 href="https://tiktok.com/@abdeentube"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
                 aria-label="TikTok"
               >
-                <TikTok className="h-5 w-5" />
+                <TikTok className="h-4 w-4 md:h-5 md:w-5" />
               </a>
             </div>
           </div>
