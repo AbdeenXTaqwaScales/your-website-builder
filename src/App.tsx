@@ -1,6 +1,4 @@
-import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -14,6 +12,7 @@ import Tafsir from "./pages/Tafsir";
 import FullPackage from "./pages/FullPackage";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
+import ResetPassword from "./pages/ResetPassword";
 import Results from "./pages/Results";
 import About from "./pages/About";
 import FAQPage from "./pages/FAQPage";
@@ -26,17 +25,19 @@ import CookiePreferences from "./pages/CookiePreferences";
 import Profile from "./pages/Profile";
 import Store from "./pages/Store";
 import Cart from "./pages/Cart";
+import ProductDetail from "./pages/ProductDetail";
 import Sponsors from "./pages/Sponsors";
 
 const queryClient = new QueryClient();
 
+// Component to scroll to top on route change
 const ScrollToTopOnRoute = () => {
   const { pathname } = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  
+
   return null;
 };
 
@@ -51,6 +52,7 @@ const AppRoutes = () => (
       <Route path="/tafsir" element={<Tafsir />} />
       <Route path="/full-package" element={<FullPackage />} />
       <Route path="/auth" element={<Auth />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/results" element={<Results />} />
       <Route path="/about" element={<About />} />
       <Route path="/faq" element={<FAQPage />} />
@@ -64,6 +66,7 @@ const AppRoutes = () => (
       <Route path="/profile" element={<Profile />} />
       <Route path="/store" element={<Navigate to="/library" replace />} />
       <Route path="/library" element={<Store />} />
+      <Route path="/library/:handle" element={<ProductDetail />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
@@ -74,13 +77,10 @@ const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <CartProvider>
-        <TooltipProvider>
-          <Toaster />
+        <BrowserRouter>
+          <AppRoutes />
           <Sonner />
-          <BrowserRouter>
-            <AppRoutes />
-          </BrowserRouter>
-        </TooltipProvider>
+        </BrowserRouter>
       </CartProvider>
     </QueryClientProvider>
   </ErrorBoundary>
