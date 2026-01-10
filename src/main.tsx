@@ -9,7 +9,7 @@ createRoot(document.getElementById("root")!).render(
     <ThemeProvider 
       attribute="class" 
       defaultTheme="dark" 
-      enableSystem 
+      forcedTheme="dark"
       storageKey="abdeens-academy-theme"
     >
       <App />
