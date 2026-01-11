@@ -3,10 +3,11 @@ import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play } from "lucide-react";
+import muhsinThumbnail from "@/assets/thumbnails/muhsin.png";
 
 // All videos combined - no categorization
 const allVideos = [
-  { title: "Muhsin", videoId: "4948b27c4bc24f22845c0109a2b66957" },
+  { title: "Muhsin", videoId: "4948b27c4bc24f22845c0109a2b66957", customThumbnail: muhsinThumbnail },
   { title: "Javed", videoId: "e16da8c0453541ce97ac297ec3cfb239" },
   { title: "Rahmah", videoId: "4fe4358489d84f3d910fdf44ce063e77" },
   { title: "Hafsah", videoId: "f3c6a2acfe15492fb7c9718c01f4c95f" },
@@ -16,9 +17,9 @@ const allVideos = [
   { title: "Musa", videoId: "24115e41c17d40158e9c2aaa9b33ec28" },
 ];
 
-const VideoCard = ({ title, videoId }: { title: string; videoId: string }) => {
+const VideoCard = ({ title, videoId, customThumbnail }: { title: string; videoId: string; customThumbnail?: string }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const thumbnailUrl = `https://cdn.loom.com/sessions/thumbnails/${videoId}-with-play.gif`;
+  const thumbnailUrl = customThumbnail || `https://cdn.loom.com/sessions/thumbnails/${videoId}-with-play.gif`;
 
   return (
     <Card className="overflow-hidden">
@@ -78,7 +79,7 @@ const Results = () => {
           {allVideos.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {allVideos.map((video, index) => (
-                <VideoCard key={index} title={video.title} videoId={video.videoId} />
+                <VideoCard key={index} title={video.title} videoId={video.videoId} customThumbnail={video.customThumbnail} />
               ))}
             </div>
           ) : null}
