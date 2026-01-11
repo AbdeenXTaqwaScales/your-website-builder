@@ -10,6 +10,7 @@ import hafsahThumbnail from "@/assets/thumbnails/hafsah.png";
 import amirahThumbnail from "@/assets/thumbnails/amirah.png";
 import abdurrahmanThumbnail from "@/assets/thumbnails/abdurrahman.png";
 import abdullahThumbnail from "@/assets/thumbnails/abdullah.png";
+import musaThumbnail from "@/assets/thumbnails/musa.png";
 
 // All videos combined - no categorization
 const allVideos = [
@@ -20,7 +21,7 @@ const allVideos = [
   { title: "Amirah", videoId: "6045e1caf3b741d3ac9b63d39d94823f", customThumbnail: amirahThumbnail },
   { title: "Abdurrahman", videoId: "1585ce2993e1411bbfbc1db61ae39230", customThumbnail: abdurrahmanThumbnail },
   { title: "Abdullah", videoId: "282a43ff02cc4cf7b23e2dbd638b4ca9", customThumbnail: abdullahThumbnail },
-  { title: "Musa", videoId: "24115e41c17d40158e9c2aaa9b33ec28" },
+  { title: "Musa", videoId: "24115e41c17d40158e9c2aaa9b33ec28", customThumbnail: musaThumbnail },
 ];
 
 const VideoCard = ({ title, videoId, customThumbnail }: { title: string; videoId: string; customThumbnail?: string }) => {
