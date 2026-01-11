@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
 import { Card, CardContent } from "@/components/ui/card";
+import { Play } from "lucide-react";
 
 // All videos combined - no categorization
 const allVideos = [
@@ -13,6 +15,47 @@ const allVideos = [
   { title: "Abdullah", videoId: "282a43ff02cc4cf7b23e2dbd638b4ca9" },
   { title: "Musa", videoId: "24115e41c17d40158e9c2aaa9b33ec28" },
 ];
+
+const VideoCard = ({ title, videoId }: { title: string; videoId: string }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const thumbnailUrl = `https://cdn.loom.com/sessions/thumbnails/${videoId}-with-play.gif`;
+
+  return (
+    <Card className="overflow-hidden">
+      <div className="aspect-video relative bg-muted">
+        {isPlaying ? (
+          <iframe
+            src={`https://www.loom.com/embed/${videoId}?autoplay=1`}
+            title={title}
+            className="absolute top-0 left-0 w-full h-full"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : (
+          <button
+            onClick={() => setIsPlaying(true)}
+            className="w-full h-full relative group cursor-pointer"
+          >
+            <img
+              src={thumbnailUrl}
+              alt={title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-primary/90 group-hover:bg-primary flex items-center justify-center transition-colors">
+                <Play className="w-8 h-8 text-primary-foreground ml-1" fill="currentColor" />
+              </div>
+            </div>
+          </button>
+        )}
+      </div>
+      <CardContent className="p-4">
+        <h4 className="font-medium text-foreground">{title}</h4>
+      </CardContent>
+    </Card>
+  );
+};
 
 const Results = () => {
   return (
@@ -35,21 +78,7 @@ const Results = () => {
           {allVideos.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {allVideos.map((video, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <div className="aspect-video relative bg-muted">
-                    <iframe
-                      src={`https://www.loom.com/embed/${video.videoId}`}
-                      title={video.title}
-                      className="absolute top-0 left-0 w-full h-full"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                  <CardContent className="p-4">
-                    <h4 className="font-medium text-foreground">{video.title}</h4>
-                  </CardContent>
-                </Card>
+                <VideoCard key={index} title={video.title} videoId={video.videoId} />
               ))}
             </div>
           ) : null}
