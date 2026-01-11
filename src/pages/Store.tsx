@@ -69,7 +69,7 @@ const Store = () => {
       />
 
       {/* Features Section */}
-      <section className="py-12 bg-gradient-to-b from-background to-primary/5">
+      <section className="py-12 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {features.map((feature, index) => (
@@ -88,7 +88,7 @@ const Store = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-background">
+      <section className="py-16 md:py-24 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
