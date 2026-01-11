@@ -8,13 +8,17 @@ interface PageHeroProps {
 
 export const PageHero = ({ title, description, showStudentCounter = true }: PageHeroProps) => {
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden gradient-hero">
-      <div className="absolute inset-0 islamic-pattern opacity-20" />
+    <section className="relative py-16 md:py-24 overflow-hidden bg-slate-900">
+      {/* Background gradient - matching Start page */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-slate-900 z-0" />
       
-      <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-primary/20 blur-2xl" />
-      <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-accent/20 blur-3xl" />
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-slate-900/70 to-slate-900 z-10" />
+      
+      {/* Islamic pattern overlay */}
+      <div className="absolute inset-0 islamic-pattern opacity-5 z-10" />
 
-      <div className="container relative z-10">
+      <div className="container relative z-20">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white">
             {title}
