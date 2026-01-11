@@ -18,10 +18,14 @@ const allVideos = [
 
 const VideoCard = ({ title, embedUrl }: { title: string; embedUrl: string }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  
+  // Extract video ID from embed URL to get thumbnail
+  const videoId = embedUrl.split('/embed/')[1];
+  const thumbnailUrl = `https://cdn.loom.com/sessions/thumbnails/${videoId}-with-play.gif`;
 
   return (
     <Card className="overflow-hidden">
-      <div className="aspect-video relative bg-gradient-to-br from-primary/20 to-primary/5">
+      <div className="aspect-video relative bg-muted">
         {isPlaying ? (
           <iframe
             src={`${embedUrl}?autoplay=1`}
@@ -37,15 +41,17 @@ const VideoCard = ({ title, embedUrl }: { title: string; embedUrl: string }) => 
             className="absolute inset-0 flex items-center justify-center group cursor-pointer"
             aria-label={`Play video: ${title}`}
           >
+            {/* Video thumbnail background */}
+            <img 
+              src={thumbnailUrl} 
+              alt={`${title}'s testimonial thumbnail`}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Dark overlay for better contrast */}
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
             {/* Play button */}
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/90 flex items-center justify-center shadow-lg group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+            <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/90 flex items-center justify-center shadow-lg group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
               <Play className="w-7 h-7 md:w-8 md:h-8 text-primary-foreground ml-1" fill="currentColor" />
-            </div>
-            {/* Title overlay */}
-            <div className="absolute bottom-4 left-4 right-4">
-              <span className="text-sm font-medium text-foreground/80 bg-background/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                {title}'s Story
-              </span>
             </div>
           </button>
         )}
