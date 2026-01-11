@@ -51,7 +51,7 @@ export const HomeHero = () => {
       <div className="container relative z-10 py-20">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">Your Journey to Perfect 
- Quran Recitation
+  Quran Recitation 
 Starts Here<span className="block bg-gradient-to-r from-sky-400 via-teal-400 to-sky-400 bg-clip-text text-transparent">Starts Here</span>
           </h1>
 
