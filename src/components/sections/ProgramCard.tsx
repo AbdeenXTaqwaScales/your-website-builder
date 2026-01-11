@@ -89,30 +89,30 @@ export const ProgramCard = ({
 
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/20 to-transparent rounded-bl-full" />
 
-      <div className="relative p-6">
+      <div className="relative p-8 md:p-10">
         {badge && (
-          <Badge className={`mb-4 bg-gradient-to-r ${colors.badge} border-0`}>
+          <Badge className={`mb-5 bg-gradient-to-r ${colors.badge} border-0 text-sm px-3 py-1`}>
             {badge}
           </Badge>
         )}
         
-        <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${colors.icon} border flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-          <Icon className="w-7 h-7" />
+        <div className={`w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br ${colors.icon} border flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+          <Icon className="w-8 h-8 md:w-10 md:h-10" />
         </div>
         
-        <h3 className={`font-display text-xl font-bold mb-2 ${colors.text}`}>{title}</h3>
-        <p className={`text-sm mb-4 ${colors.textMuted}`}>{outcome}</p>
+        <h3 className={`font-display text-2xl md:text-3xl font-bold mb-3 ${colors.text}`}>{title}</h3>
+        <p className={`text-base md:text-lg mb-5 ${colors.textMuted}`}>{outcome}</p>
         
-        <div className="mb-4">
-          <span className={`text-xs font-medium uppercase tracking-wider ${colors.textMuted}`}>
+        <div className="mb-6">
+          <span className={`text-sm font-medium uppercase tracking-wider ${colors.textMuted}`}>
             Best for:{" "}
             <span className={colors.text}>{bestFor}</span>
           </span>
         </div>
         
-        <div className={`inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${colors.button} px-4 py-2 rounded-lg group-hover:gap-3 transition-all`}>
+        <div className={`inline-flex items-center gap-2 text-base font-semibold bg-gradient-to-r ${colors.button} px-6 py-3 rounded-lg group-hover:gap-3 transition-all`}>
           View Program
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight className="w-5 h-5" />
         </div>
       </div>
     </Link>

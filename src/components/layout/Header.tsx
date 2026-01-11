@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
+  { href: "/sponsors", label: "Sponsors" },
 ];
 
 export const Header = () => {
@@ -61,17 +62,17 @@ export const Header = () => {
   return (
     <>
       <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-        <div className="w-full flex h-16 items-center justify-between px-4">
+        <div className="w-full flex h-16 items-center px-4">
           {/* Logo - Far left */}
-          <Link to="/" className="group flex items-center gap-2">
+          <Link to="/" className="group flex items-center gap-2 flex-shrink-0">
             <img src={logo} alt="Abdeens Academy" className="h-10 w-auto" />
             <span className="font-display font-bold text-xl text-foreground whitespace-nowrap opacity-0 max-w-0 overflow-hidden group-hover:opacity-100 group-hover:max-w-[200px] transition-all duration-300">
               Abdeens Academy
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden lg:flex items-center justify-center gap-6 flex-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -86,7 +87,7 @@ export const Header = () => {
           </nav>
 
           {/* Right side actions - far right */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
             <Link
               to="/cart"
               className="relative p-2 hover:bg-muted rounded-lg transition-colors text-muted-foreground hover:text-foreground"
