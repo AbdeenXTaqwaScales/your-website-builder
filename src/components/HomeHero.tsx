@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
 export const HomeHero = () => {
-  return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Deep Blue Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0d2847] to-[#0a1628]" />
 
@@ -19,9 +17,15 @@ export const HomeHero = () => {
 
         {/* Floating orbs with glow */}
         <div className="absolute top-20 left-[15%] w-4 h-4 rounded-full bg-sky-400/40 blur-sm animate-pulse" />
-        <div className="absolute top-40 right-[20%] w-3 h-3 rounded-full bg-teal-400/50 blur-sm animate-pulse" style={{ animationDelay: "0.5s" }} />
-        <div className="absolute bottom-32 left-[25%] w-5 h-5 rounded-full bg-sky-300/30 blur-sm animate-pulse" style={{ animationDelay: "1s" }} />
-        <div className="absolute bottom-20 right-[30%] w-3 h-3 rounded-full bg-teal-300/40 blur-sm animate-pulse" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute top-40 right-[20%] w-3 h-3 rounded-full bg-teal-400/50 blur-sm animate-pulse" style={{
+        animationDelay: "0.5s"
+      }} />
+        <div className="absolute bottom-32 left-[25%] w-5 h-5 rounded-full bg-sky-300/30 blur-sm animate-pulse" style={{
+        animationDelay: "1s"
+      }} />
+        <div className="absolute bottom-20 right-[30%] w-3 h-3 rounded-full bg-teal-300/40 blur-sm animate-pulse" style={{
+        animationDelay: "1.5s"
+      }} />
 
         {/* Subtle line accents */}
         <div className="absolute top-1/4 left-0 w-32 h-px bg-gradient-to-r from-transparent via-sky-500/20 to-transparent" />
@@ -47,12 +51,12 @@ export const HomeHero = () => {
       <div className="container relative z-10 py-20">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-            Experience The Beauty
-            <span className="block bg-gradient-to-r from-sky-400 via-teal-400 to-sky-400 bg-clip-text text-transparent">of Qur'an Learning</span>
+            Your Journey to Perfect Quran Recitation
+            <span className="block bg-gradient-to-r from-sky-400 via-teal-400 to-sky-400 bg-clip-text text-transparent">Starts Here</span>
           </h1>
 
           <p className="text-lg md:text-xl text-sky-100/80 max-w-2xl mx-auto">
-            Your guided journey to memorizing, understanding, and living the Qur'an.
+            Transform hesitant recitation into confident, beautiful Quranic fluency from your very first lesson.
           </p>
 
           {/* Find Your Course Button */}
@@ -66,6 +70,5 @@ export const HomeHero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
