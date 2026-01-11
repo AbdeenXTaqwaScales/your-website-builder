@@ -1,6 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
-import { WaveDivider } from "@/components/sections/WaveDivider";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -87,7 +86,6 @@ const FAQPage = () => {
   return (
     <Layout>
       <PageHero title="Frequently Asked Questions" description="Find answers to common questions about our programs" />
-      <WaveDivider fromColor="hsl(199, 40%, 20%)" toColor="hsl(var(--secondary) / 0.2)" />
 
       {/* FAQ Categories */}
       <section className="py-12 md:py-16 bg-secondary/20">

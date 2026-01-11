@@ -1,6 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
-import { WaveDivider } from "@/components/sections/WaveDivider";
 import { Card, CardContent } from "@/components/ui/card";
 
 // All videos combined - no categorization
@@ -22,7 +21,6 @@ const Results = () => {
         title="Student Results"
         description="Watch real stories from our students who transformed their Qur'anic journey"
       />
-      <WaveDivider fromColor="hsl(199, 40%, 20%)" toColor="hsl(var(--secondary) / 0.2)" />
 
       {/* Videos Section - All Together */}
       <section className="py-8 sm:py-12 md:py-16 bg-secondary/20">

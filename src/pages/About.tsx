@@ -1,6 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
-import { WaveDivider } from "@/components/sections/WaveDivider";
 import { Card, CardContent } from "@/components/ui/card";
 
 const milestones = [
@@ -22,7 +21,6 @@ const About = () => {
         title="About Abdeens Academy"
         description="Our mission, our vision, and our journey to transform Qur'anic education"
       />
-      <WaveDivider fromColor="hsl(199, 40%, 20%)" toColor="hsl(var(--secondary) / 0.2)" />
 
       {/* Mission & Vision */}
       <section className="py-16 md:py-20 bg-secondary/20">

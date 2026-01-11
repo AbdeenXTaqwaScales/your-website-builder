@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Heart, BookOpen, Users, Star } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
-import { WaveDivider } from "@/components/sections/WaveDivider";
 
 const impactPoints = [
   {
@@ -64,7 +63,6 @@ const Sponsors = () => {
         description="Get the ajr of enabling someone to memorize the Qur'an"
         showStudentCounter={false}
       />
-      <WaveDivider fromColor="hsl(199, 40%, 20%)" toColor="hsl(var(--secondary) / 0.2)" />
 
       <section className="py-16 md:py-24 bg-secondary/20">
         <div className="container mx-auto px-4">
