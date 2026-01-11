@@ -70,7 +70,7 @@ const colorSchemes = {
 interface ManuscriptCardProps {
   title: string;
   description: string;
-  introduction: string;
+  introduction?: string;
   icon: ComponentType<{ className?: string }>;
   href: string;
   featured?: boolean;
@@ -114,7 +114,7 @@ export const ManuscriptCard: React.FC<ManuscriptCardProps> = ({
       ref={cardRef}
       to={href}
       className={`
-        group relative block p-6 rounded-2xl border-2 transition-all duration-500
+        group relative block p-8 md:p-10 rounded-2xl border-2 transition-all duration-500 min-h-[280px] md:min-h-[320px]
         ${colors.bg} ${colors.border} ${colors.hover} ${colors.glow}
         hover:shadow-xl hover:-translate-y-1
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
@@ -136,16 +136,16 @@ export const ManuscriptCard: React.FC<ManuscriptCardProps> = ({
         </div>
       )}
 
-      <div className={`w-14 h-14 rounded-xl ${colors.iconBg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-        <Icon className={`w-7 h-7 ${colors.icon}`} />
+      <div className={`w-16 h-16 md:w-20 md:h-20 rounded-xl ${colors.iconBg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+        <Icon className={`w-8 h-8 md:w-10 md:h-10 ${colors.icon}`} />
       </div>
 
-      <h3 className={`font-display text-xl font-bold mb-2 ${colors.title}`}>{title}</h3>
-      <p className={`text-sm mb-4 ${colors.text}`}>{description}</p>
+      <h3 className={`font-display text-2xl md:text-3xl font-bold mb-3 ${colors.title}`}>{title}</h3>
+      <p className={`text-base md:text-lg mb-6 ${colors.text}`}>{description}</p>
 
-      <div className={`inline-flex items-center gap-2 text-sm font-medium ${colors.icon} group-hover:gap-3 transition-all`}>
+      <div className={`inline-flex items-center gap-2 text-base font-semibold ${colors.icon} group-hover:gap-3 transition-all`}>
         Explore program
-        <ArrowRight className="w-4 h-4" />
+        <ArrowRight className="w-5 h-5" />
       </div>
 
       <div className={`absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl ${colors.accent} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
