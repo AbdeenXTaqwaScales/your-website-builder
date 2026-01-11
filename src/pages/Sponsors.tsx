@@ -40,6 +40,7 @@ const sponsors = [
     borderClass: "border-yellow-500/50",
     iconColor: "text-yellow-500",
     titleColor: "text-yellow-500",
+    glowClass: "shadow-[0_0_20px_rgba(234,179,8,0.3)] animate-[glow_2s_ease-in-out_infinite]",
   },
   {
     tier: "silver",
@@ -51,6 +52,7 @@ const sponsors = [
     borderClass: "border-slate-400/50",
     iconColor: "text-slate-300",
     titleColor: "text-slate-300",
+    glowClass: "",
   },
   {
     tier: "bronze",
@@ -62,6 +64,7 @@ const sponsors = [
     borderClass: "border-amber-700/50",
     iconColor: "text-amber-600",
     titleColor: "text-amber-600",
+    glowClass: "",
   },
 ];
 
@@ -137,7 +140,7 @@ const Sponsors = () => {
               {sponsors.map((sponsor, index) => (
                 <Card 
                   key={index} 
-                  className={`${sponsor.bgClass} ${sponsor.borderClass} border-2 text-center`}
+                  className={`${sponsor.bgClass} ${sponsor.borderClass} ${sponsor.glowClass} border-2 text-center`}
                 >
                   <CardContent className="p-6">
                     <div className={`mx-auto h-16 w-16 rounded-full bg-background/50 flex items-center justify-center mb-4`}>
