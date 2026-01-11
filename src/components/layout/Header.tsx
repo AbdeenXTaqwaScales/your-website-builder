@@ -142,18 +142,6 @@ export const Header = () => {
           </div>
         </div>
         
-        {/* Wavy bottom border */}
-        <svg 
-          className="absolute bottom-0 left-0 right-0 w-full h-2 translate-y-full" 
-          viewBox="0 0 1200 8" 
-          preserveAspectRatio="none"
-        >
-          <path 
-            d="M0,4 C150,0 300,8 450,4 C600,0 750,8 900,4 C1050,0 1200,8 1200,4 L1200,8 L0,8 Z" 
-            fill="hsl(var(--border))"
-            opacity="0.5"
-          />
-        </svg>
       </header>
 
       {/* Mobile/Tablet Navigation Overlay - Outside header for proper z-index */}

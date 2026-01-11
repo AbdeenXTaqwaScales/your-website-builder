@@ -5,6 +5,8 @@ import { FAQ } from "@/components/FAQ";
 import { ConversationMessage } from "@/components/sections/ConversationMessage";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { Users, Globe, Book, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ProgramCard } from "@/components/sections/ProgramCard";
 
 // Custom Arabic letter icon component
 const ArabicLetterIcon = ({ className }: { className?: string }) => (
@@ -13,47 +15,41 @@ const ArabicLetterIcon = ({ className }: { className?: string }) => (
     <span className="-mt-1">ب</span>
   </span>
 );
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ManuscriptCard } from "@/components/sections/ManuscriptCard";
 
 const programs = [
   {
     title: "Hifdh Program",
-    description: "Memorize Qur'an with structure and accountability",
-    introduction:
-      "Embark on the noble journey of preserving the words of Allah in your heart. Our Hifdh program provides structured memorization plans, regular revision schedules, and dedicated teachers who will guide you page by page until you become a Hafidh of the Qur'an.",
-    icon: Book,
+    outcome: "Memorize Qur'an with structure, support, and accountability.",
+    bestFor: "Students that want to pursue hifz and improve tajweed.",
+    priceTeaser: "",
     href: "/hifdh",
-    colorScheme: "emerald" as const,
+    icon: Book,
   },
   {
     title: "Arabic Program",
-    description: "Understand Qur'anic Arabic as you recite",
-    introduction:
-      "Unlock the beauty of the Qur'an by learning the language in which it was revealed. Master Arabic grammar, vocabulary, and morphology through a curriculum designed specifically for understanding the divine text. Feel the meaning flow as you recite.",
-    icon: ArabicLetterIcon,
+    outcome: "Understand Qur'anic Arabic as you recite.",
+    bestFor: "Students who want to understand, not just recite.",
+    priceTeaser: "",
     href: "/arabic",
-    colorScheme: "sapphire" as const,
+    icon: ArabicLetterIcon,
   },
   {
     title: "Tafsir Program",
-    description: "Study the meanings and context of the Qur'an",
-    introduction:
-      "Dive deep into the wisdom, context, and lessons within each verse. Study classical and contemporary tafsir works with qualified scholars who will help you understand the historical context, linguistic nuances, and practical applications of Allah's guidance.",
-    icon: BookOpen,
+    outcome: "Study the meanings and context of the Qur'an in a structured way.",
+    bestFor: "Students seeking deeper understanding and reflection.",
+    priceTeaser: "",
     href: "/tafsir",
-    colorScheme: "royal" as const,
+    icon: BookOpen,
   },
   {
-    title: "Full Package",
-    description: "All 3 subjects in one comprehensive journey",
-    introduction:
-      "The complete Qur'anic education experience. Combine memorization, Arabic language mastery, and deep tafsir study in one integrated program. This holistic approach ensures you don't just recite the Qur'an—you truly understand, embody, and live by its teachings.",
-    icon: GraduationCap,
+    title: "Full Package (All 3 Subjects)",
+    outcome: "Hifdh, Arabic, and Tafsir in one guided 1-on-1 program.",
+    bestFor: "Serious students ready for a full transformation.",
+    priceTeaser: "",
     href: "/full-package",
+    icon: GraduationCap,
+    badge: "⭐ VIP Package",
     featured: true,
-    colorScheme: "gold" as const,
   },
 ];
 
@@ -161,20 +157,10 @@ const Index = () => {
             </Link>
           </div>
 
-          {/* Illuminated Manuscript Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto mb-8 md:mb-12">
+          {/* Program Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto mb-8 md:mb-12">
             {programs.map((program, index) => (
-              <ManuscriptCard
-                key={index}
-                title={program.title}
-                description={program.description}
-                introduction={program.introduction}
-                icon={program.icon}
-                href={program.href}
-                featured={program.featured}
-                colorScheme={program.colorScheme}
-                index={index}
-              />
+              <ProgramCard key={index} {...program} />
             ))}
           </div>
 
