@@ -60,24 +60,24 @@ export const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          {/* Logo - Left corner with hover text */}
+      <header className="sticky top-0 z-50 w-full gradient-hero backdrop-blur supports-[backdrop-filter]:bg-background/10">
+        <div className="w-full flex h-16 items-center justify-between px-4">
+          {/* Logo - Far left */}
           <Link to="/" className="group flex items-center gap-2">
             <img src={logo} alt="Abdeens Academy" className="h-10 w-auto" />
-            <span className="font-display font-bold text-xl text-foreground whitespace-nowrap opacity-0 max-w-0 overflow-hidden group-hover:opacity-100 group-hover:max-w-[200px] transition-all duration-300">
+            <span className="font-display font-bold text-xl text-white whitespace-nowrap opacity-0 max-w-0 overflow-hidden group-hover:opacity-100 group-hover:max-w-[200px] transition-all duration-300">
               Abdeens Academy
             </span>
           </Link>
 
-          {/* Desktop Navigation - Centered (hidden on mobile and tablet) */}
+          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === link.href ? "text-primary" : "text-foreground/80"
+                className={`text-sm font-medium transition-colors hover:text-white ${
+                  location.pathname === link.href ? "text-white" : "text-white/80"
                 }`}
               >
                 {link.label}
@@ -85,11 +85,12 @@ export const Header = () => {
             ))}
           </nav>
 
-          {/* Right side actions - visible on desktop only */}
+          {/* Right side actions - far right */}
           <div className="hidden lg:flex items-center gap-3">
-
-            {/* Cart Button */}
-            <Link to="/cart" className="relative p-2 hover:bg-muted rounded-lg transition-colors text-foreground/80 hover:text-foreground">
+            <Link
+              to="/cart"
+              className="relative p-2 hover:bg-white/10 rounded-lg transition-colors text-white/80 hover:text-white"
+            >
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
@@ -100,18 +101,21 @@ export const Header = () => {
 
             {user ? (
               <>
-                <Link to="/profile" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-muted transition-colors">
-                  <User className="h-5 w-5 text-foreground/80" />
-                  <span className="text-sm font-medium text-foreground/80">{user.email?.split('@')[0]}</span>
+                <Link
+                  to="/profile"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 transition-colors"
+                >
+                  <User className="h-5 w-5 text-white/80" />
+                  <span className="text-sm font-medium text-white/80">{user.email?.split("@")[0]}</span>
                 </Link>
-                <Button variant="outline" size="sm" onClick={() => signOut()}>
+                <Button variant="outline" size="sm" onClick={() => signOut()} className="border-white/20 text-white hover:bg-white/10">
                   Sign Out
                 </Button>
               </>
             ) : (
               <div className="flex items-center gap-2">
                 <Link to="/auth">
-                  <Button variant="ghost" size="sm" className="text-foreground/80 hover:text-foreground">
+                  <Button variant="ghost" size="sm" className="text-white/80 hover:text-white hover:bg-white/10">
                     Sign In
                   </Button>
                 </Link>
@@ -122,9 +126,9 @@ export const Header = () => {
             )}
           </div>
 
-          {/* Mobile/Tablet: Cart & Menu Button */}
-          <div className="flex lg:hidden items-center gap-2">
-            <Link to="/cart" className="relative p-2 text-foreground/80">
+          {/* Mobile/Tablet: Cart & Menu Button - far right */}
+          <div className="flex lg:hidden items-center">
+            <Link to="/cart" className="relative p-2 text-white/80 hover:text-white">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
@@ -135,13 +139,12 @@ export const Header = () => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
-              className="p-2 text-foreground/80"
+              className="p-2 text-white/80 hover:text-white"
             >
               <Menu className="h-6 w-6" />
             </button>
           </div>
         </div>
-        
       </header>
 
       {/* Mobile/Tablet Navigation Overlay - Outside header for proper z-index */}
