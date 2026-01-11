@@ -4,11 +4,12 @@ import { PageHero } from "@/components/sections/PageHero";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play } from "lucide-react";
 import muhsinThumbnail from "@/assets/thumbnails/muhsin.png";
+import javedThumbnail from "@/assets/thumbnails/javed.png";
 
 // All videos combined - no categorization
 const allVideos = [
   { title: "Muhsin", videoId: "4948b27c4bc24f22845c0109a2b66957", customThumbnail: muhsinThumbnail },
-  { title: "Javed", videoId: "e16da8c0453541ce97ac297ec3cfb239" },
+  { title: "Javed", videoId: "e16da8c0453541ce97ac297ec3cfb239", customThumbnail: javedThumbnail },
   { title: "Rahmah", videoId: "4fe4358489d84f3d910fdf44ce063e77" },
   { title: "Hafsah", videoId: "f3c6a2acfe15492fb7c9718c01f4c95f" },
   { title: "Amirah", videoId: "6045e1caf3b741d3ac9b63d39d94823f" },
