@@ -7,6 +7,7 @@ import muhsinThumbnail from "@/assets/thumbnails/muhsin.png";
 import javedThumbnail from "@/assets/thumbnails/javed.png";
 import rahmahThumbnail from "@/assets/thumbnails/rahmah.png";
 import hafsahThumbnail from "@/assets/thumbnails/hafsah.png";
+import amirahThumbnail from "@/assets/thumbnails/amirah.png";
 
 // All videos combined - no categorization
 const allVideos = [
@@ -14,7 +15,7 @@ const allVideos = [
   { title: "Javed", videoId: "e16da8c0453541ce97ac297ec3cfb239", customThumbnail: javedThumbnail },
   { title: "Rahmah", videoId: "4fe4358489d84f3d910fdf44ce063e77", customThumbnail: rahmahThumbnail },
   { title: "Hafsah", videoId: "f3c6a2acfe15492fb7c9718c01f4c95f", customThumbnail: hafsahThumbnail },
-  { title: "Amirah", videoId: "6045e1caf3b741d3ac9b63d39d94823f" },
+  { title: "Amirah", videoId: "6045e1caf3b741d3ac9b63d39d94823f", customThumbnail: amirahThumbnail },
   { title: "Abdurrahman", videoId: "1585ce2993e1411bbfbc1db61ae39230" },
   { title: "Abdullah", videoId: "282a43ff02cc4cf7b23e2dbd638b4ca9" },
   { title: "Musa", videoId: "24115e41c17d40158e9c2aaa9b33ec28" },
