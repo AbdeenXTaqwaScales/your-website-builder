@@ -114,7 +114,7 @@ export const ManuscriptCard: React.FC<ManuscriptCardProps> = ({
       ref={cardRef}
       to={href}
       className={`
-        group relative block p-6 md:p-8 rounded-2xl border-2 transition-all duration-500 min-h-[280px] md:min-h-[320px]
+        group relative block p-5 sm:p-6 md:p-8 rounded-2xl border-2 transition-all duration-500 min-h-[240px] sm:min-h-[300px] md:min-h-[360px] flex flex-col
         ${colors.bg} ${colors.border} ${colors.hover} ${colors.glow}
         hover:shadow-xl hover:-translate-y-1
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
