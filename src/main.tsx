@@ -6,13 +6,8 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider 
-      attribute="class" 
-      defaultTheme="dark" 
-      forcedTheme="dark"
-      storageKey="abdeens-academy-theme"
-    >
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem storageKey="abdeens-academy-theme">
       <App />
     </ThemeProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
