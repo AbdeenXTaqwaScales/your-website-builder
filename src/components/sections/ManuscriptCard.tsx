@@ -141,9 +141,9 @@ export const ManuscriptCard: React.FC<ManuscriptCardProps> = ({
       </div>
 
       <h3 className={`font-display text-lg md:text-xl font-bold mb-2 ${colors.title}`}>{title}</h3>
-      <p className={`text-sm mb-3 ${colors.text} line-clamp-2`}>{description}</p>
+      <p className={`text-sm mb-auto ${colors.text} line-clamp-2`}>{description}</p>
 
-      <div className={`inline-flex items-center gap-2 text-sm font-semibold ${colors.icon} group-hover:gap-3 transition-all`}>
+      <div className={`inline-flex items-center gap-2 text-sm font-semibold ${colors.icon} group-hover:gap-3 transition-all mt-4`}>
         Explore program
         <ArrowRight className="w-5 h-5" />
       </div>
