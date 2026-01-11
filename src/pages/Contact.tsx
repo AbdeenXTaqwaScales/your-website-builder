@@ -1,6 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
-import { WaveDivider } from "@/components/sections/WaveDivider";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, ExternalLink } from "lucide-react";
@@ -13,7 +12,6 @@ const Contact = () => {
   return (
     <Layout>
       <PageHero title="Contact Us" description="Have questions? We're here to help. Reach out through email." />
-      <WaveDivider fromColor="hsl(199, 40%, 20%)" toColor="hsl(var(--secondary) / 0.2)" />
 
       {/* Contact Methods */}
       <section className="py-12 md:py-16 bg-secondary/20">

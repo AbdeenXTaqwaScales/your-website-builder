@@ -1,6 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
-import { WaveDivider } from "@/components/sections/WaveDivider";
 
 const TermsOfService = () => {
   return (
@@ -10,7 +9,6 @@ const TermsOfService = () => {
         description="Please read these terms carefully before enrolling in our programs."
         showStudentCounter={false}
       />
-      <WaveDivider fromColor="hsl(199, 40%, 20%)" toColor="hsl(var(--secondary) / 0.2)" />
 
       <section className="py-16 bg-secondary/20">
         <div className="container mx-auto px-4 max-w-4xl">
