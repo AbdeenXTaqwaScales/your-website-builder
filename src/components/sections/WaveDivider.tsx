@@ -8,13 +8,13 @@ interface WaveDividerProps {
 
 export const WaveDivider: React.FC<WaveDividerProps> = ({
   fromColor = 'hsl(var(--background))',
-  toColor = 'hsl(var(--secondary) / 0.3)',
+  toColor = 'hsl(var(--secondary) / 0.2)',
   flip = false,
 }) => {
   return (
     <div 
       className={`w-full overflow-hidden leading-none ${flip ? 'rotate-180' : ''}`}
-      style={{ marginTop: flip ? 0 : '-1px', marginBottom: flip ? '-1px' : 0 }}
+      style={{ marginTop: '-1px', marginBottom: '-1px' }}
     >
       <svg
         className="relative block w-full h-16 md:h-24"
