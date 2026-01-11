@@ -37,11 +37,18 @@ const Results = () => {
               {allVideos.map((video, index) => (
                 <Card key={index} className="overflow-hidden">
                   <div className="aspect-video relative bg-muted">
+                    {/* Loading skeleton */}
+                    <div className="absolute inset-0 bg-muted animate-pulse flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-muted-foreground/20 flex items-center justify-center">
+                        <div className="w-0 h-0 border-l-[16px] border-l-muted-foreground/40 border-y-[10px] border-y-transparent ml-1" />
+                      </div>
+                    </div>
                     <iframe
                       src={video.embedUrl}
                       title={video.title}
-                      className="absolute top-0 left-0 w-full h-full"
+                      className="absolute top-0 left-0 w-full h-full z-10"
                       frameBorder="0"
+                      loading="lazy"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     />
