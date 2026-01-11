@@ -1,41 +1,91 @@
 import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import type { User, Session } from "@supabase/supabase-js";
 
-// Placeholder auth hook - will be replaced when Supabase is connected
 export function useAuth() {
-  const [user, setUser] = useState<any>(null);
-  const [session, setSession] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Set up auth state listener FIRST
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        setLoading(false);
+      }
+    );
+
+    // THEN check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const signUp = async (email: string, password: string, fullName?: string) => {
-    console.log("Auth not configured - signUp called with:", email);
-    return { error: { message: "Authentication not configured. Please enable Lovable Cloud." } };
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: window.location.origin,
+        data: {
+          full_name: fullName,
+        },
+      },
+    });
+    return { error };
   };
 
   const signIn = async (email: string, password: string, rememberMe: boolean = true) => {
-    console.log("Auth not configured - signIn called with:", email);
-    return { error: { message: "Authentication not configured. Please enable Lovable Cloud." } };
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    return { error };
   };
 
   const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
     setUser(null);
     setSession(null);
-    return { error: null };
+    return { error };
   };
 
   const signInWithGoogle = async () => {
-    return { error: { message: "Authentication not configured. Please enable Lovable Cloud." } };
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: window.location.origin,
+      },
+    });
+    return { error };
   };
 
   const resetPassword = async (email: string) => {
-    return { error: { message: "Authentication not configured. Please enable Lovable Cloud." } };
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    return { error };
   };
 
   const updatePassword = async (newPassword: string) => {
-    return { error: { message: "Authentication not configured. Please enable Lovable Cloud." } };
+    const { error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+    return { error };
   };
 
   const resendVerificationEmail = async (email: string) => {
-    return { error: { message: "Authentication not configured. Please enable Lovable Cloud." } };
+    const { error } = await supabase.auth.resend({
+      type: "signup",
+      email,
+    });
+    return { error };
   };
 
   return {

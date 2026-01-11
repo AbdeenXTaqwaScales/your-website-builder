@@ -60,12 +60,14 @@ export const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
-          {/* Logo - Left corner */}
-          <Link to="/" className="flex items-center gap-2">
+          {/* Logo - Left corner with hover text */}
+          <Link to="/" className="group flex items-center gap-2">
             <img src={logo} alt="Abdeens Academy" className="h-10 w-auto" />
-            <span className="font-display font-bold text-xl hidden sm:block">Abdeens Academy</span>
+            <span className="font-display font-bold text-xl text-foreground whitespace-nowrap opacity-0 max-w-0 overflow-hidden group-hover:opacity-100 group-hover:max-w-[200px] transition-all duration-300">
+              Abdeens Academy
+            </span>
           </Link>
 
           {/* Desktop Navigation - Centered (hidden on mobile and tablet) */}
@@ -75,7 +77,7 @@ export const Header = () => {
                 key={link.href}
                 to={link.href}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === link.href ? "text-primary" : "text-muted-foreground"
+                  location.pathname === link.href ? "text-primary" : "text-foreground/80"
                 }`}
               >
                 {link.label}
@@ -87,7 +89,7 @@ export const Header = () => {
           <div className="hidden lg:flex items-center gap-3">
 
             {/* Cart Button */}
-            <Link to="/cart" className="relative p-2 hover:bg-muted rounded-lg transition-colors">
+            <Link to="/cart" className="relative p-2 hover:bg-muted rounded-lg transition-colors text-foreground/80 hover:text-foreground">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
@@ -99,8 +101,8 @@ export const Header = () => {
             {user ? (
               <>
                 <Link to="/profile" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-muted transition-colors">
-                  <User className="h-5 w-5 text-muted-foreground" />
-                  <span className="text-sm font-medium">{user.email?.split('@')[0]}</span>
+                  <User className="h-5 w-5 text-foreground/80" />
+                  <span className="text-sm font-medium text-foreground/80">{user.email?.split('@')[0]}</span>
                 </Link>
                 <Button variant="outline" size="sm" onClick={() => signOut()}>
                   Sign Out
@@ -109,7 +111,7 @@ export const Header = () => {
             ) : (
               <div className="flex items-center gap-2">
                 <Link to="/auth">
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="sm" className="text-foreground/80 hover:text-foreground">
                     Sign In
                   </Button>
                 </Link>
@@ -122,7 +124,7 @@ export const Header = () => {
 
           {/* Mobile/Tablet: Cart & Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
-            <Link to="/cart" className="relative p-2">
+            <Link to="/cart" className="relative p-2 text-foreground/80">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
@@ -133,12 +135,25 @@ export const Header = () => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
-              className="p-2"
+              className="p-2 text-foreground/80"
             >
               <Menu className="h-6 w-6" />
             </button>
           </div>
         </div>
+        
+        {/* Wavy bottom border */}
+        <svg 
+          className="absolute bottom-0 left-0 right-0 w-full h-2 translate-y-full" 
+          viewBox="0 0 1200 8" 
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M0,4 C150,0 300,8 450,4 C600,0 750,8 900,4 C1050,0 1200,8 1200,4 L1200,8 L0,8 Z" 
+            fill="hsl(var(--border))"
+            opacity="0.5"
+          />
+        </svg>
       </header>
 
       {/* Mobile/Tablet Navigation Overlay - Outside header for proper z-index */}
