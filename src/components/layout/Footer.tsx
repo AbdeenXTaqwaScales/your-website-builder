@@ -4,8 +4,8 @@ import logo from "@/assets/logo.png";
 
 // TikTok icon component
 const TikTok = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
   </svg>
 );
 
@@ -28,61 +28,63 @@ const legalLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-secondary/50 border-t">
-      <div className="container py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <img src={logo} alt="Abdeens Academy" className="h-10 w-auto" />
-              <span className="font-display font-bold text-xl">Abdeens Academy</span>
+    <footer className="border-t bg-secondary/50">
+      <div className="container mx-auto px-4 py-8 md:py-12">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8">
+          <div className="col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-2">
+            <Link to="/" className="flex items-center gap-2 mb-3 md:mb-4">
+              <img
+                src={logo}
+                alt="Abdeens Academy Logo"
+                className="h-8 w-8 md:h-10 md:w-10 rounded-lg object-contain"
+              />
+              <span className="font-display font-semibold text-lg md:text-xl text-foreground">Abdeens Academy</span>
             </Link>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-xs md:text-sm max-w-xs mb-3 md:mb-4">
               Your guided journey to memorizing, understanding, and living the Qur'an.
             </p>
-            <div className="text-sm text-muted-foreground space-y-1">
+            <div className="text-muted-foreground text-xs space-y-1">
               <p>Email: admin@abdeenacademy.com</p>
               <p>KVK: 95364218</p>
-              <p>Registered in the Netherlands</p>
+              <p className="hidden sm:block">Registered in the Netherlands</p>
             </div>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold text-foreground text-sm md:text-base mb-3 md:mb-4">Quick Links</h4>
+            <nav className="flex flex-col gap-1.5 md:gap-2">
               {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </Link>
               ))}
-            </ul>
+            </nav>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold text-foreground text-sm md:text-base mb-3 md:mb-4">Legal</h4>
+            <nav className="flex flex-col gap-1.5 md:gap-2">
               {legalLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-xs md:text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </Link>
               ))}
-            </ul>
+            </nav>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Follow Us</h4>
-            <div className="flex gap-3">
+          <div className="col-span-2 sm:col-span-1">
+            <h4 className="font-semibold text-foreground text-sm md:text-base mb-3 md:mb-4">Follow Us</h4>
+            <div className="flex gap-3 md:gap-4">
               <a
-                href="https://instagram.com/abdeentube"
+                href="https://instagram.com/abdeentube_"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
@@ -91,7 +93,7 @@ export const Footer = () => {
                 <Instagram className="h-4 w-4 md:h-5 md:w-5" />
               </a>
               <a
-                href="https://youtube.com/@AbdeenTube"
+                href="https://www.youtube.com/@AbdeenTube"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
@@ -112,10 +114,8 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t text-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Abdeens Academy. All rights reserved.
-          </p>
+        <div className="border-t mt-6 md:mt-8 pt-6 md:pt-8 text-center text-xs md:text-sm text-muted-foreground">
+          <p>© {new Date().getFullYear()} Abdeens Academy. All rights reserved.</p>
         </div>
       </div>
     </footer>
