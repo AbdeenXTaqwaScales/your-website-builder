@@ -1,9 +1,9 @@
 // Index page component
 import { Layout } from "@/components/layout/Layout";
-import { HomeHero } from "@/components/HomeHero";
-import { FAQ } from "@/components/FAQ";
+import { HomeHero } from "@/components/sections/HomeHero";
+import { FAQ } from "@/components/sections/FAQ";
 import { ConversationMessage } from "@/components/sections/ConversationMessage";
-import { TestimonialCard } from "@/components/TestimonialCard";
+import { TestimonialCard } from "@/components/sections/TestimonialCard";
 import { Users, Globe, Book, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
 
 // Custom Arabic letter icon component
