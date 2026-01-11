@@ -183,4 +183,14 @@
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
+
+  /* Gold glow animation for sponsor card */
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 15px rgba(234, 179, 8, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(234, 179, 8, 0.5);
+    }
+  }
 }
