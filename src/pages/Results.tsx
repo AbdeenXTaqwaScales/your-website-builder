@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
 import { Card, CardContent } from "@/components/ui/card";
@@ -24,29 +25,38 @@ const allVideos = [
 ];
 
 const VideoCard = ({ title, videoId, customThumbnail }: { title: string; videoId: string; customThumbnail?: string }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
   const thumbnailUrl = customThumbnail || `https://cdn.loom.com/sessions/thumbnails/${videoId}-with-play.gif`;
-  const loomUrl = `https://www.loom.com/share/${videoId}`;
 
   return (
     <Card className="overflow-hidden">
       <div className="aspect-video relative bg-muted">
-        <a
-          href={loomUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full h-full relative group cursor-pointer block"
-        >
-          <img
-            src={thumbnailUrl}
-            alt={title}
-            className="w-full h-full object-cover"
+        {isPlaying ? (
+          <iframe
+            src={`https://www.loom.com/embed/${videoId}?autoplay=1`}
+            title={title}
+            className="absolute top-0 left-0 w-full h-full"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
           />
-          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-primary/90 group-hover:bg-primary flex items-center justify-center transition-colors">
-              <Play className="w-8 h-8 text-primary-foreground ml-1" fill="currentColor" />
+        ) : (
+          <button
+            onClick={() => setIsPlaying(true)}
+            className="w-full h-full relative group cursor-pointer"
+          >
+            <img
+              src={thumbnailUrl}
+              alt={title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-primary/90 group-hover:bg-primary flex items-center justify-center transition-colors">
+                <Play className="w-8 h-8 text-primary-foreground ml-1" fill="currentColor" />
+              </div>
             </div>
-          </div>
-        </a>
+          </button>
+        )}
       </div>
       <CardContent className="p-4">
         <h4 className="font-medium text-foreground">{title}</h4>
