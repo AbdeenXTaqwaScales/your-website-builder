@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, User, ShoppingCart } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/contexts/CartContext";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { href: "/start", label: "Programs" },
@@ -63,9 +64,7 @@ export const Header = () => {
         <div className="container flex h-16 items-center justify-between">
           {/* Logo - Left corner */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
-              A
-            </div>
+            <img src={logo} alt="Abdeens Academy" className="h-10 w-auto" />
             <span className="font-display font-bold text-xl hidden sm:block">Abdeens Academy</span>
           </Link>
 
