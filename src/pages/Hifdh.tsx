@@ -25,6 +25,7 @@ import {
   TrendingUp,
   GraduationCap,
   Calendar,
+  Baby,
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { redirectToCheckout } from "@/lib/shopify";
@@ -604,6 +605,12 @@ const Hifdh = () => {
                   description:
                     "Annual subscribers get entered into our Umrah draw for a chance to perform Umrah with the academy!",
                   icon: Plane,
+                },
+                {
+                  feature: "Children Welcome (5+ Years)",
+                  description:
+                    "Children above the age of 5 may join our program with parental consent. We provide a nurturing, age-appropriate learning environment to help young learners begin their Qur'an memorization journey.",
+                  icon: Baby,
                 },
               ].map((item, index) => (
                 <AccordionItem
