@@ -48,7 +48,7 @@ export const HomeHero = () => {
       </div>
 
       {/* Content - Centered */}
-      <div className="container relative z-10 py-20 -mt-10">
+      <div className="container relative z-10 py-20 -mt-20">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
             Your Journey to Perfect
