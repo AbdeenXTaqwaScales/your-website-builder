@@ -128,7 +128,7 @@ export const Header = () => {
           </div>
 
           {/* Mobile/Tablet: Cart & Menu Button - far right */}
-          <div className="flex lg:hidden items-center">
+          <div className="flex lg:hidden items-center ml-auto">
             <Link to="/cart" className="relative p-2 text-muted-foreground hover:text-foreground">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
