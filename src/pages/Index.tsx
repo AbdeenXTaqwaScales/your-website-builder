@@ -1,62 +1,83 @@
 import { Layout } from "@/components/layout/Layout";
-import { PageHero } from "@/components/sections/PageHero";
-import { Card, CardContent } from "@/components/ui/card";
+import { HomeHero } from "@/components/HomeHero";
+import { ManuscriptCard } from "@/components/sections/ManuscriptCard";
+import { Book, BookOpen, GraduationCap } from "lucide-react";
 
-// All videos combined - no categorization
-const allVideos = [
-  { title: "Muhsin", embedUrl: "https://www.loom.com/embed/4948b27c4bc24f22845c0109a2b66957" },
-  { title: "Javed", embedUrl: "https://www.loom.com/embed/e16da8c0453541ce97ac297ec3cfb239" },
-  { title: "Rahmah", embedUrl: "https://www.loom.com/embed/4fe4358489d84f3d910fdf44ce063e77" },
-  { title: "Hafsah", embedUrl: "https://www.loom.com/embed/f3c6a2acfe15492fb7c9718c01f4c95f" },
-  { title: "Amirah", embedUrl: "https://www.loom.com/embed/6045e1caf3b741d3ac9b63d39d94823f" },
-  { title: "Abdurrahman", embedUrl: "https://www.loom.com/embed/1585ce2993e1411bbfbc1db61ae39230" },
-  { title: "Abdullah", embedUrl: "https://www.loom.com/embed/282a43ff02cc4cf7b23e2dbd638b4ca9" },
-  { title: "Musa", embedUrl: "https://www.loom.com/embed/24115e41c17d40158e9c2aaa9b33ec28" },
+// Custom Arabic letter icon component
+const ArabicLetterIcon = ({ className }: { className?: string }) => (
+  <span className={`font-arabic text-lg font-bold leading-none flex flex-col items-center ${className || ""}`}>
+    <span>ا</span>
+    <span className="-mt-1">ب</span>
+  </span>
+);
+
+const programs = [
+  {
+    title: "Hifdh Program",
+    description: "Memorize Qur'an with structure, support, and accountability.",
+    href: "/hifdh",
+    icon: Book,
+    colorScheme: "emerald" as const,
+  },
+  {
+    title: "Arabic Program",
+    description: "Understand Qur'anic Arabic as you recite.",
+    href: "/arabic",
+    icon: ArabicLetterIcon,
+    colorScheme: "sapphire" as const,
+  },
+  {
+    title: "Tafsir Program",
+    description: "Study the meanings and context of the Qur'an in a structured way.",
+    href: "/tafsir",
+    icon: BookOpen,
+    colorScheme: "royal" as const,
+  },
+  {
+    title: "Full Package (All 3 Subjects)",
+    description: "Hifdh, Arabic, and Tafsir in one guided 1-on-1 program.",
+    href: "/full-package",
+    icon: GraduationCap,
+    colorScheme: "gold" as const,
+    featured: true,
+  },
 ];
 
-const Results = () => {
+const Index = () => {
   return (
     <Layout>
-      <PageHero
-        title="Student Results"
-        description="Watch real stories from our students who transformed their Qur'anic journey"
-      />
+      <HomeHero />
 
-      {/* Videos Section - All Together */}
-      <section className="py-8 sm:py-12 md:py-16">
+      {/* Programs Section */}
+      <section id="programs" className="py-16 md:py-24 bg-secondary/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">Student Testimonials</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Hear directly from our students about their learning experiences.
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              Choose Your Path
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+              Whether you want to memorize, understand the language, or dive deep into meanings — we have a program for you.
             </p>
           </div>
 
-          {allVideos.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {allVideos.map((video, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <div className="aspect-video relative bg-muted">
-                    <iframe
-                      src={video.embedUrl}
-                      title={video.title}
-                      className="absolute top-0 left-0 w-full h-full"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                  <CardContent className="p-4">
-                    <h4 className="font-medium text-foreground">{video.title}</h4>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : null}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+            {programs.map((program, index) => (
+              <ManuscriptCard
+                key={index}
+                index={index}
+                title={program.title}
+                description={program.description}
+                icon={program.icon}
+                href={program.href}
+                colorScheme={program.colorScheme}
+                featured={program.featured}
+              />
+            ))}
+          </div>
         </div>
       </section>
     </Layout>
   );
 };
 
-export default Results;
+export default Index;
