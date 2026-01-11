@@ -57,7 +57,7 @@ const sponsors = [
   {
     tier: "bronze",
     name: "Adel Baig",
-    studentsSponsored: 8,
+    studentsSponsored: 6,
     contribution: "€1,800",
     icon: Award,
     bgClass: "bg-gradient-to-br from-amber-700/20 to-orange-800/10",
