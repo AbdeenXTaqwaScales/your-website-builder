@@ -14,7 +14,7 @@ const Contact = () => {
       <PageHero title="Contact Us" description="Have questions? We're here to help. Reach out through email." />
 
       {/* Contact Methods */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-background to-primary/5">
+      <section className="py-12 md:py-16 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex justify-center">

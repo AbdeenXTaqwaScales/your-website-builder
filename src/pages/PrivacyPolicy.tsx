@@ -10,7 +10,7 @@ const PrivacyPolicy = () => {
         showStudentCounter={false}
       />
 
-      <section className="py-16 bg-gradient-to-b from-background to-primary/5">
+      <section className="py-16 bg-secondary/20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="prose prose-lg dark:prose-invert max-w-none">
             <p className="text-sm text-muted-foreground mb-8">Last updated: October 23, 2025</p>

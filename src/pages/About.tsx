@@ -23,7 +23,7 @@ const About = () => {
       />
 
       {/* Mission & Vision */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-background to-primary/5">
+      <section className="py-16 md:py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <Card className="bg-primary/5 border-primary/20">
