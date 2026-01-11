@@ -88,7 +88,7 @@ const FAQPage = () => {
       <PageHero title="Frequently Asked Questions" description="Find answers to common questions about our programs" />
 
       {/* FAQ Categories */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-16 bg-gradient-to-b from-background to-primary/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-8">
             {faqCategories.map((category, categoryIndex) => (

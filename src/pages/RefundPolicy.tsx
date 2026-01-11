@@ -10,7 +10,7 @@ const RefundPolicy = () => {
         showStudentCounter={false}
       />
 
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-gradient-to-b from-background to-primary/5">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="prose prose-lg dark:prose-invert max-w-none">
             <p className="text-muted-foreground mb-8">
