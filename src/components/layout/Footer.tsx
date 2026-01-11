@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Youtube } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 // TikTok icon component
 const TikTok = ({ className }: { className?: string }) => (
@@ -32,9 +33,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
-                A
-              </div>
+              <img src={logo} alt="Abdeens Academy" className="h-10 w-auto" />
               <span className="font-display font-bold text-xl">Abdeens Academy</span>
             </Link>
             <p className="text-sm text-muted-foreground">
