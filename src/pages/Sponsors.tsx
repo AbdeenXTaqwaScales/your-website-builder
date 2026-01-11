@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Heart, BookOpen, Users, Star } from "lucide-react";
+import { Heart, BookOpen, Users, Star, Award, Medal, Trophy } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
 
@@ -26,6 +26,42 @@ const impactPoints = [
     icon: Heart,
     title: "Sadaqah Jariyah",
     description: "Your contribution becomes ongoing charity as students teach others and pass on their knowledge.",
+  },
+];
+
+const sponsors = [
+  {
+    tier: "gold",
+    name: "Abu Bakr",
+    studentsSponsored: 30,
+    contribution: "€9,000",
+    icon: Trophy,
+    bgClass: "bg-gradient-to-br from-yellow-500/20 to-amber-600/10",
+    borderClass: "border-yellow-500/50",
+    iconColor: "text-yellow-500",
+    titleColor: "text-yellow-500",
+  },
+  {
+    tier: "silver",
+    name: "Rafeeq Haneef",
+    studentsSponsored: 10,
+    contribution: "€3,000",
+    icon: Medal,
+    bgClass: "bg-gradient-to-br from-slate-300/20 to-slate-400/10",
+    borderClass: "border-slate-400/50",
+    iconColor: "text-slate-300",
+    titleColor: "text-slate-300",
+  },
+  {
+    tier: "bronze",
+    name: "Adel Baig",
+    studentsSponsored: 8,
+    contribution: "€1,800",
+    icon: Award,
+    bgClass: "bg-gradient-to-br from-amber-700/20 to-orange-800/10",
+    borderClass: "border-amber-700/50",
+    iconColor: "text-amber-600",
+    titleColor: "text-amber-600",
   },
 ];
 
@@ -90,6 +126,39 @@ const Sponsors = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Sponsors Wall of Honor */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <h2 className="text-3xl font-display font-semibold text-foreground text-center mb-8">
+              Sponsors Wall of Honor
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {sponsors.map((sponsor, index) => (
+                <Card 
+                  key={index} 
+                  className={`${sponsor.bgClass} ${sponsor.borderClass} border-2 text-center`}
+                >
+                  <CardContent className="p-6">
+                    <div className={`mx-auto h-16 w-16 rounded-full bg-background/50 flex items-center justify-center mb-4`}>
+                      <sponsor.icon className={`h-8 w-8 ${sponsor.iconColor}`} />
+                    </div>
+                    <p className={`text-xs font-semibold uppercase tracking-wider ${sponsor.titleColor} mb-2`}>
+                      {sponsor.tier} Tier
+                    </p>
+                    <h3 className="text-xl font-semibold text-foreground mb-4">{sponsor.name}</h3>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <p>
+                        <span className="font-medium text-foreground">{sponsor.studentsSponsored}</span> Students Sponsored
+                      </p>
+                      <p>
+                        Contribution: <span className="font-medium text-foreground">{sponsor.contribution}</span>
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
 
           <div className="max-w-2xl mx-auto">
