@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Heart, BookOpen, Users, Star } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHero } from "@/components/sections/PageHero";
@@ -28,11 +30,32 @@ const impactPoints = [
   },
 ];
 
+const donationAmounts = [25, 50, 100, 250];
+
 const Sponsors = () => {
-  const handleSponsorClick = () => {
-    // This will be connected to a payment flow
-    window.open("mailto:admin@abdeenacademy.com?subject=Sponsorship%20Inquiry", "_blank");
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(50);
+  const [customAmount, setCustomAmount] = useState<string>("");
+
+  const handleAmountSelect = (amount: number) => {
+    setSelectedAmount(amount);
+    setCustomAmount("");
   };
+
+  const handleCustomAmountChange = (value: string) => {
+    setCustomAmount(value);
+    setSelectedAmount(null);
+  };
+
+  const handleSponsorClick = () => {
+    const amount = customAmount || selectedAmount;
+    if (amount) {
+      window.open(`https://www.paypal.com/paypalme/abdeentube/${amount}`, "_blank");
+    } else {
+      window.open("https://www.paypal.com/paypalme/abdeentube", "_blank");
+    }
+  };
+
+  const currentAmount = customAmount || selectedAmount;
 
   return (
     <Layout>
@@ -73,18 +96,58 @@ const Sponsors = () => {
 
           <div className="max-w-2xl mx-auto">
             <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
-              <CardContent className="p-8 text-center">
-                <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Become a Sponsor Today</h2>
-                <p className="text-muted-foreground mb-6">
-                  Whether you sponsor one student or many, your contribution makes a lasting impact. Contact us to learn
-                  more about our sponsorship program and how you can help.
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-display font-semibold text-foreground mb-4 text-center">
+                  Become a Sponsor Today
+                </h2>
+                <p className="text-muted-foreground mb-6 text-center">
+                  Choose an amount or enter a custom donation. Every contribution makes a lasting impact.
                 </p>
-                <Button size="lg" onClick={handleSponsorClick} className="gap-2">
+
+                {/* Preset Amounts */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                  {donationAmounts.map((amount) => (
+                    <button
+                      key={amount}
+                      onClick={() => handleAmountSelect(amount)}
+                      className={`py-3 px-4 rounded-lg border-2 font-semibold transition-all ${
+                        selectedAmount === amount
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border bg-card hover:border-primary/50"
+                      }`}
+                    >
+                      €{amount}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Custom Amount */}
+                <div className="mb-6">
+                  <div className="relative">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground font-medium">€</span>
+                    <Input
+                      type="number"
+                      placeholder="Enter custom amount"
+                      value={customAmount}
+                      onChange={(e) => handleCustomAmountChange(e.target.value)}
+                      className="pl-8 text-center"
+                      min="1"
+                    />
+                  </div>
+                </div>
+
+                <Button 
+                  size="lg" 
+                  onClick={handleSponsorClick} 
+                  className="w-full gap-2"
+                  disabled={!currentAmount}
+                >
                   <Heart className="h-5 w-5" />
-                  Sponsor a Student
+                  {currentAmount ? `Donate €${currentAmount}` : "Select an Amount"}
                 </Button>
-                <p className="text-xs text-muted-foreground mt-4">
-                  You'll be redirected to contact us about sponsorship options
+                
+                <p className="text-xs text-muted-foreground mt-4 text-center">
+                  You'll be redirected to PayPal to complete your donation securely
                 </p>
               </CardContent>
             </Card>
